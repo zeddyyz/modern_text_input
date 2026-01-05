@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:icons_animate/icons_animate.dart';
+import 'package:modern_text_input/icons_animate.dart';
 
 class CustomAnimatedIcon extends StatefulWidget {
   const CustomAnimatedIcon({
@@ -12,8 +12,8 @@ class CustomAnimatedIcon extends StatefulWidget {
     this.onPressed,
   });
 
-  final IconData beginIcon;
-  final IconData endIcon;
+  final Widget beginIcon;
+  final Widget endIcon;
   final Curve? curve;
   final double? size;
   final Color? color;
@@ -49,7 +49,7 @@ class _CustomAnimatedIconState extends State<CustomAnimatedIcon>
 
   @override
   Widget build(BuildContext context) {
-    return AnimateIcons(
+    return AnimateIconsAdapted(
       startIcon: widget.beginIcon,
       endIcon: widget.endIcon,
       controller: _controller,

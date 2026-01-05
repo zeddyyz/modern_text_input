@@ -28,13 +28,13 @@ class ModernTextInput extends StatefulWidget {
   final String hintText;
   final Color primaryColor;
   final Color secondaryColor;
-  final IconData icon;
+  final Widget icon;
   final bool isFilled;
 
   final bool showSuffixIcon;
   final bool isPassword;
-  final IconData? enabledSuffixIcon;
-  final IconData? disabledSuffixIcon;
+  final Widget? enabledSuffixIcon;
+  final Widget? disabledSuffixIcon;
   final VoidCallback? onSuffixIconPressed;
 
   final bool isNumber;
@@ -56,20 +56,20 @@ class _ModernTextInputState extends State<ModernTextInput> {
             : TextInputType.text,
         decoration: InputDecoration(
           hintText: widget.hintText,
-          hintStyle: widget.style.copyWith(color: widget.primaryColor.withOpacity(0.6)),
+          hintStyle: widget.style.copyWith(color: widget.primaryColor.withValues(alpha: 0.6)),
           contentPadding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
           filled: widget.isFilled,
           fillColor: widget.secondaryColor,
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: widget.primaryColor.withOpacity(0.1),
+              color: widget.primaryColor.withValues(alpha: 0.1),
               width: 1,
             ),
             borderRadius: BorderRadius.circular(16),
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: widget.primaryColor.withOpacity(0.6),
+              color: widget.primaryColor.withValues(alpha: 0.6),
               width: 1,
             ),
             borderRadius: BorderRadius.circular(12),
@@ -77,15 +77,11 @@ class _ModernTextInputState extends State<ModernTextInput> {
           prefixIcon: Container(
             decoration: BoxDecoration(
               border: Border(
-                right: BorderSide(color: widget.primaryColor.withOpacity(0.1)),
+                right: BorderSide(color: widget.primaryColor.withValues(alpha: 0.1)),
               ),
             ),
             margin: const EdgeInsets.only(right: 16),
-            child: Icon(
-              widget.icon,
-              color: widget.primaryColor.withOpacity(0.8),
-              size: 16,
-            ),
+            child: widget.icon,
           ),
           prefixIconConstraints: const BoxConstraints(minWidth: 80),
         ),
@@ -103,20 +99,20 @@ class _ModernTextInputState extends State<ModernTextInput> {
             obscureText: widget.isPassword,
             decoration: InputDecoration(
               hintText: widget.hintText,
-              hintStyle: widget.style.copyWith(color: widget.primaryColor.withOpacity(0.6)),
+              hintStyle: widget.style.copyWith(color: widget.primaryColor.withValues(alpha: 0.6)),
               contentPadding: const EdgeInsets.fromLTRB(20, 22, 20, 22),
               filled: widget.isFilled,
               fillColor: widget.secondaryColor,
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: widget.primaryColor.withOpacity(0.1),
+                  color: widget.primaryColor.withValues(alpha: 0.1),
                   width: 1,
                 ),
                 borderRadius: BorderRadius.circular(16),
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: widget.primaryColor.withOpacity(0.8),
+                  color: widget.primaryColor.withValues(alpha: 0.8),
                   width: 1,
                 ),
                 borderRadius: BorderRadius.circular(12),
@@ -124,15 +120,11 @@ class _ModernTextInputState extends State<ModernTextInput> {
               prefixIcon: Container(
                 decoration: BoxDecoration(
                   border: Border(
-                    right: BorderSide(color: widget.primaryColor.withOpacity(0.1)),
+                    right: BorderSide(color: widget.primaryColor.withValues(alpha: 0.1)),
                   ),
                 ),
                 margin: const EdgeInsets.only(right: 16),
-                child: Icon(
-                  widget.icon,
-                  color: widget.primaryColor.withOpacity(0.8),
-                  size: 16,
-                ),
+                child: widget.icon,
               ),
               prefixIconConstraints: const BoxConstraints(minWidth: 80),
               suffix: const SizedBox(width: 50),
@@ -145,11 +137,11 @@ class _ModernTextInputState extends State<ModernTextInput> {
             right: 12,
             top: 8,
             child: CustomAnimatedIcon(
-              beginIcon: widget.enabledSuffixIcon ?? Icons.visibility_off,
-              endIcon: widget.disabledSuffixIcon ?? Icons.visibility,
+              beginIcon: widget.enabledSuffixIcon ?? const Icon(Icons.visibility_off),
+              endIcon: widget.disabledSuffixIcon ?? const Icon(Icons.visibility),
               size: 20,
               curve: Curves.easeInOut,
-              color: widget.primaryColor.withOpacity(0.8),
+              color: widget.primaryColor.withValues(alpha: 0.8),
               onPressed: widget.onSuffixIconPressed,
             ),
           ),
